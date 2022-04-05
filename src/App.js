@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import DashboardPage from './pages/DashboardPage'
+import PostsPage from './pages/PostsPage'
+import './index.css';
+//Redux Thunk: Async middleware for redux
+//Redux Devtools: Connects redux app to Redux
+
+//Router has 2 different ways of navigating: Navigate or useNavigate
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path = "/" element = {<DashboardPage />} />
+        <Route path = "/posts" element = {<PostsPage />} />
+        <Route path = "*" element ={<Navigate to = "/" />} />
+        {/* redirect -- doesn't exists anymore */}
+      </Routes>
+    </BrowserRouter>
   );
 }
 
